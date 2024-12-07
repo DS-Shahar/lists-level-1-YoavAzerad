@@ -113,6 +113,25 @@ public class IntNode {
     return list1.getNext();
   }
 
+  public boolean ex8(IntNode list1, IntNode list2) {
+    IntNode p1 = new IntNode(-1, list1);
+    IntNode p2 = new IntNode(-1, list2);
+    int count = 0;
+    if (p1.getNext()==null) {
+      return true;
+    }
+    while (p2.hasNext()) {
+      if (p1.getNext().getValue()==p2.getNext().getValue()) {
+        count++;
+      }
+      p2.setNext(p2.getNext().getNext());
+    }
+    if (count==0) {
+      return false;
+    }
+    return ex8(list1.getNext(), list2);
+  }
+
 
 
 
