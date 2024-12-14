@@ -1,6 +1,6 @@
 class Main {
   public static void main(String[] args) {
-    int [] array = {1, 3, 4, 5};
+    int [] array = {1, 3, 4, 5, 6};
     int [] array2 = {3, 4, 5, 1, 7};
     Node<Integer> node = new Node<Integer>(0);
     Node<Integer> list = Main.ex1(array);
@@ -18,6 +18,7 @@ class Main {
     System.out.println("ex8: " + answer);
 
     System.out.println("ex10: " + Main.ex10(list, list2));
+    System.out.println("ex11: " + Main.ex11(list, list2));
   }
 
   public static Node<Integer> ex1(int[] array) {
@@ -157,6 +158,23 @@ class Main {
     }
     return p3.getNext();
 }
+
+public static Node<Integer> ex11(Node<Integer> list1, Node<Integer> list2) {
+  Node<Integer> p1 = new Node<Integer>(-1, list1);
+  Node<Integer> p2 = new Node<Integer>(-1, list2);
+  while (p1.hasNext()) {
+    while (p2.hasNext()) {
+      if (p1.getValue().equals(p2.getValue())) {
+          p1.setNext(p1.getNext().getNext());
+      }
+      p2 = p2.getNext();
+    }
+    p1 = p1.getNext();
+  }
+  return p1;
+}
+
+
   
   
 }
